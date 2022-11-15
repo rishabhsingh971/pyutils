@@ -22,6 +22,8 @@ def req(
     raise_for_status=True,
     cookies=None,
     ensure_user_agent=False,
+    **kwargs
+
 ):
     if ensure_user_agent:
         _ensure_user_agent(headers)
@@ -38,6 +40,7 @@ def req(
             headers=headers,
             timeout=timeout,
             cookies=cookies,
+            **kwargs,
         )
         if raise_for_status:
             res.raise_for_status()
