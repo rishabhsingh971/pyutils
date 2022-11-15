@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pyutils"
+version = "0.0.1"
+authors = [
+  { name="Rishabh Singh", email="rishabhsingh971@gmail.com" },
+]
+description = "collection of python utility functions"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/rishabhsingh971/pyutils"
+"Bug Tracker" = "https://github.com/rishabhsingh971/pyutils/issues"
