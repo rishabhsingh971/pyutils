@@ -2,8 +2,12 @@ import requests
 import os
 from pyutils.logu.main import logger
 
+def _ensure_user_agent(headers: dict):
+    if "User-Agent" in headers or "user-agent" in headers:
+        return
+    headers["User-Agent"] =  os.environ.get("PYU_USER_AGENT", __package__)
+    return
 
-USER_AGENT = os.environ.get("PYU_USER_AGENT", __package__)
 def req(
     url,
     method="get",
@@ -17,9 +21,10 @@ def req(
     raise_exception=False,
     raise_for_status=True,
     cookies=None,
+    ensure_user_agent=False,
 ):
-    if "User-Agent" not in headers and "user-agent" not in headers and USER_AGENT:
-        headers["User-Agent"] = USER_AGENT
+    if ensure_user_agent:
+        _ensure_user_agent(headers)
     logger.debug("Request url: {}".format(url))
     res = None
     try:
