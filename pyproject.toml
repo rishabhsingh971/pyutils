@@ -4,7 +4,7 @@ version = "0.0.1"
 description = "collection of python utility functions"
 authors = ["Rishabh Singh <rishabhsingh971@gmail.com>"]
 readme = "README.md"
-packages = [{include = "src/pyutils"}]
+packages = [{include = "pyutils"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
