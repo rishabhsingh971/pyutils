@@ -11,11 +11,11 @@ setuptools.setup(
     description='Testing installation of Package',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url='https://github.com/mike-huls/toolbox',
+    url='https://github.com/rishabhsingh971/pyutils',
     project_urls = {
-        "Bug Tracker": "https://github.com/mike-huls/toolbox/issues"
+        "Bug Tracker": "https://github.com/rishabhsingh971/pyutils/issues"
     },
     license='MIT',
-    packages=['toolbox'],
+    packages=['pyutils'],
     install_requires=['requests'],
 )
