@@ -96,6 +96,11 @@ def save_csv(file_path, rows, mode, fieldnames=None):
         return
     if isinstance(rows, dict):
         rows = list(rows.values())
+    if isinstance(rows, dict) and fieldnames is None:
+        fields = set()
+        for key in rows:
+            fields.add(key)
+        fieldnames = list(fields)
     write_header = False
     if not os.path.exists(file_path) or mode == "w":
         parent_dir = os.path.dirname(file_path)
