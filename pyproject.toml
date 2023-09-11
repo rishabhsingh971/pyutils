@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyutils"
-version = "0.0.1a1"
+version = "0.0.1a2"
 description = "collection of python utility functions"
 authors = ["Rishabh Singh <rishabhsingh971@gmail.com>"]
 readme = "README.md"
