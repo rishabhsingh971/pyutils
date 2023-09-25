@@ -1,1 +1,1 @@
-from pyutils.httpu.main import req
+from pyutils.httpu.main import req, req_to_curl, to_curl

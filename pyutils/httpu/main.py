@@ -1,6 +1,10 @@
-import requests
+import json
 import os
+
+import requests
+
 from pyutils.logu.main import logger
+
 
 def _ensure_user_agent(headers: dict):
     if "User-Agent" in headers or "user-agent" in headers:
@@ -56,3 +60,29 @@ def req(
             )
         )
         return res, e
+
+def req_to_curl(req: requests.Request) -> str:
+    return to_curl(
+        url=req.url,
+        method=req.method,
+        headers=req.headers,
+        cookies=getattr(req, "cookies", None),
+        payload=getattr(req, "body", None),
+    )
+
+
+def to_curl(url:str, method: str, headers: dict, cookies: dict, payload: any) -> str:
+    command = "curl -X {method} -H {headers} -d '{data}' '{uri}'"
+    data = ""
+    if cookies:
+        headers["Cookies"] = ";".join([f"{k}:{v}" for k, v in cookies.items()])
+    if payload:
+        if isinstance(payload, str):
+            data = payload
+        elif isinstance(payload, bytes):
+            data = payload.decode()
+        else:
+            data = json.dumps(payload)
+    header_list = ['"{0}: {1}"'.format(k, v) for k, v in headers.items()]
+    header = " -H ".join(header_list)
+    return command.format(method=method, headers=header, data=data, uri=url)
