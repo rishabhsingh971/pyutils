@@ -6,4 +6,4 @@ collection of python utility functions
 2. Run `poetry install`
 
 ## Version
-1. VERSION=0.0.1a0 && poetry version $VERSION  && git tag $VERSION && git push --tags
+1. VERSION=0.0.1a4 && poetry version $VERSION && git commit -m "Bump version to $VERSION" pyproject.toml && git tag $VERSION && git push --tags
