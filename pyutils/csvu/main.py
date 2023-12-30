@@ -90,7 +90,7 @@ def load_csv(
     return data
 
 
-def save_csv(file_path, rows, mode, fieldnames=None):
+def save_csv(file_path, rows, mode, fieldnames=None, **dict_writer_kwargs):
     logger.debug("Saving csv file: {}, rows: {}".format(file_path, len(rows)))
     if not rows:
         return
@@ -108,7 +108,7 @@ def save_csv(file_path, rows, mode, fieldnames=None):
             os.makedirs(parent_dir)
         write_header = True
     with open(file_path, mode) as fp:
-        writer = csv.DictWriter(fp, fieldnames=fieldnames or rows[0].keys())
+        writer = csv.DictWriter(fp, fieldnames=fieldnames or rows[0].keys(), **dict_writer_kwargs)
         if write_header:
             writer.writeheader()
         writer.writerows(rows)
